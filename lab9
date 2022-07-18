@@ -1,0 +1,26 @@
+apiVersion: apps/v1 # K8S API Version
+kind: ReplicaSet  # Object Type
+metadata:
+ name: nginx
+ labels:
+  app: ui
+  tier: frontend
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   tier: frontend
+ template:
+  metadata:
+   labels:
+    tier: frontend
+  spec:
+   containers:
+   - name: nginx
+     image: nginx:1.7.9
+     ports:
+     - containerPort: 80
+   - name: springapp
+     image: yanivomc/spring-music:latest
+     ports:
+     - containerPort: 8080
