@@ -1,0 +1,1 @@
+kubectl create cronjob hello--world --image=alpine:latest --schedule='*/1 * * * *' -- echo "Hello World"
